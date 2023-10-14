@@ -52,12 +52,6 @@ public class AccessingDataJPAApplication {
             addy.addBuddy(new BuddyInfo("Yug", "456", "2 address"));
             addressRepo.save(addy);
 
-            // this doesn't work -- AddressBook is left empty
-            AddressBook addyTwo = new AddressBook();
-            addressRepo.save(addyTwo);
-            addyTwo.addBuddy(new BuddyInfo("test", "123", "1 address"));
-            addyTwo.addBuddy(new BuddyInfo("test2", "456", "2 address"));
-
             //logging
             log.info("AddressBook using findAll()");
             log.info("--------------------------");
@@ -71,33 +65,5 @@ public class AccessingDataJPAApplication {
         };
     }
 }
-//    @Bean
-//    public CommandLineRunner addressBookDemo(AddressBookRepository repo) {
-//        return (args) -> {
-//            //added and saved
-//            AddressBook addy = new AddressBook();
-//            addy.addBuddy(new BuddyInfo("Guy", "123", "1 address"));
-//            addy.addBuddy(new BuddyInfo("Yug", "456", "2 address"));
-//            repo.save(addy);
-//
-//            // this doesn't work -- AddressBook is left empty
-//            AddressBook addyTwo = new AddressBook();
-//            repo.save(addyTwo);
-//            addyTwo.addBuddy(new BuddyInfo("test", "123", "1 address"));
-//            addyTwo.addBuddy(new BuddyInfo("test2", "456", "2 address"));
-//
-//            //logging
-//            log.info("AddressBook using findAll()");
-//            log.info("--------------------------");
-//            for (AddressBook a : repo.findAll()) {
-////                for (BuddyInfo b : a.getBuddies().values()) {
-////                    log.info(b.toString());
-////                }
-//                log.info("\n" + a.toString());
-//            }
-//            log.info("");
-//
-//        };
-//    }
 
 

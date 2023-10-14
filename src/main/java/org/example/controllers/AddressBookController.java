@@ -71,4 +71,10 @@ public class AddressBookController {
         return "addressbook";
     }
 
+
+    @RequestMapping("/")
+    public @ResponseBody String greeting() {
+        return "Hello, World";
+    }
+
 }

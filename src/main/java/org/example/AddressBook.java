@@ -2,6 +2,7 @@ package org.example;
 
 import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.Serializable;
 import java.util.HashMap;

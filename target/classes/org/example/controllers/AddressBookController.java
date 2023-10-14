@@ -59,15 +59,6 @@ public class AddressBookController {
 
         return "addressbook";
     }
-//    @PostMapping("/buddyInfo")
-//    //@ResponseBody removing this tag makes a view appear after fn runs
-//    public String newBuddyInfo(@RequestBody BuddyInfo buddyInfo, Model model) {
-//
-//        buddyInfoRepository.save(buddyInfo);
-//        model.addAttribute("newBuddy", buddyInfo);
-//        System.out.println(buddyInfo);
-//        return "buddyinfo";
-//    }
 
     @GetMapping("/addressbook/{id}")
     public String getAllBuddiesByAddressBookId(@PathVariable(value = "id") Long addressBookId, Model model) {
@@ -78,6 +69,12 @@ public class AddressBookController {
         model.addAttribute("buddies", buddies);
 
         return "addressbook";
+    }
+
+
+    @RequestMapping("/")
+    public @ResponseBody String greeting() {
+        return "Hello, World";
     }
 
 }
