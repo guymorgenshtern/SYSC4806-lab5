@@ -1,2 +1,5 @@
+org/example/SmokeTest.class
 org/example/AddressBookTest.class
+org/example/HTTPRequestTest.class
+org/example/WebAppTests.class
 org/example/BuddyInfoTest.class
