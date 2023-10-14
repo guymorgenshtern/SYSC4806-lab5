@@ -43,7 +43,7 @@ public class AddressBookController {
         repository.save(addressBook);
         model.addAttribute("newBuddy", buddyInfo);
         System.out.println(buddyInfo);
-        return "buddyInfo";
+        return "buddyinfo";
 
     }
 
