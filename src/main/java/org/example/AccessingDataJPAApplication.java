@@ -4,6 +4,7 @@ import org.example.jpa.AddressBookRepository;
 import org.example.jpa.BuddyInfoRepository;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,11 +23,13 @@ public class AccessingDataJPAApplication {
 
     private static final Logger log = LoggerFactory.getLogger(AccessingDataJPAApplication.class);
 
+    @Autowired
     public static void main(String[] args) {
         SpringApplication.run(AccessingDataJPAApplication.class, args);
     }
 
     @Bean
+    @Autowired
     public CommandLineRunner buddyInfoDemo(BuddyInfoRepository buddyRepo, AddressBookRepository addressRepo) {
         return (args) -> {
             buddyRepo.save(new BuddyInfo("Guy", "123", "1 address"));
