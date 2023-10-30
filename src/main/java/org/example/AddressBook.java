@@ -88,7 +88,7 @@ public class AddressBook implements Serializable {
     public String toString() {
         StringBuilder s = new StringBuilder();
         for (BuddyInfo b : this.getBuddies().values()) {
-            s.append("\n ").append(b.toString());
+            s.append(b.toString()).append("</br> ");
         }
         return s.toString().isBlank() ? "empty address book" : s.toString();
     }

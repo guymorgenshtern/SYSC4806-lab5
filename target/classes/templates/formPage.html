@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Address Book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="load.js"></script>
+    <noscript>
+        <h1>Create an Address Book</h1>
+        <form action="#" th:action="@{/}" th:object="${addressBook}" method="post">
+            <p><input type="submit" value="Create Address Book" /></p>
+        </form>
+    </noscript>
+</head>
+</html>

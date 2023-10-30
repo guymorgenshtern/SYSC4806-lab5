@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AddressBook</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <h1 class="AddressBook">Address Book - </h1>
+        <button class = "new" type="button">new</button>
+        <button class = "old" type="button">old</button>
+        <div class="content">
+            <table id="buddiesTable">
+                <thead>Buddies</thead>
+                <tr class="table-header">
+                    <th class="id-cell">ID</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                </tr>
+                <tbody class="table-body">
+                </tbody>
+            </table>
+
+            <form id="addBudForm">
+                <div class="input"><label>Name: </label><input type="text"/></div>
+                <div class="input"><label>Phone Number: </label><input type="text" /></div>
+                <div class="input"><label>Address: </label><input type="text"/></div>
+                <p><input id="addNewBud" type="submit" value="Submit" /></p>
+            </form>
+            </div>
+    </div>
+</body>
+</html>

@@ -22,7 +22,7 @@ public class AddressBookController {
     @Autowired
     BuddyInfoRepository buddyInfoRepository;
 
-    @GetMapping("/addressBook")
+    @PostMapping("/addressBook")
     public String newAddressBook(Model model) {
         AddressBook book = new AddressBook();
         repository.save(book);
@@ -30,20 +30,40 @@ public class AddressBookController {
         return "addressbook";
     }
 
+//    @PostMapping("/addToAddressBook/{id}")
+//    public String addBuddyInfo(@PathVariable(name = "id") Long addressBookId, @RequestBody BuddyInfo buddyInfo, Model model) {
+//        AddressBook addressBook = repository.findById(addressBookId).isPresent() ? repository.findById(addressBookId).get() : null;
+//
+//        if (addressBook == null) {
+//            throw new ResourceNotFoundException("Address book not found");
+//        }
+//
+//        buddyInfoRepository.save(buddyInfo);
+//        addressBook.addBuddy(buddyInfo);
+//        repository.save(addressBook);
+//        model.addAttribute("newBuddy", buddyInfo);
+//        System.out.println(buddyInfo);
+//        return "addressbook";
+//
+//    }
+
     @PostMapping("/addToAddressBook/{id}")
-    public String addBuddyInfo(@PathVariable(name = "id") Long addressBookId, @RequestBody BuddyInfo buddyInfo, Model model) {
+    public String addBuddyInfo(@PathVariable(name = "id") Long addressBookId, @RequestParam String name,
+                               @RequestParam String number, @RequestParam String address, Model model) {
+
         AddressBook addressBook = repository.findById(addressBookId).isPresent() ? repository.findById(addressBookId).get() : null;
 
         if (addressBook == null) {
             throw new ResourceNotFoundException("Address book not found");
         }
 
-        buddyInfoRepository.save(buddyInfo);
-        addressBook.addBuddy(buddyInfo);
+        BuddyInfo b = new BuddyInfo(name, number, address);
+        buddyInfoRepository.save(b);
+        addressBook.addBuddy(b);
         repository.save(addressBook);
-        model.addAttribute("newBuddy", buddyInfo);
-        System.out.println(buddyInfo);
-        return "buddyinfo";
+        model.addAttribute("addressBook", addressBook);
+        model.addAttribute("addressBookId", addressBookId);
+        return "addressbook";
 
     }
 
@@ -65,16 +85,25 @@ public class AddressBookController {
         AddressBook addressBook = repository.findById(addressBookId)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + addressBookId));
 
-        Map<String, BuddyInfo> buddies = new HashMap<String, BuddyInfo>(addressBook.getBuddies());
-        model.addAttribute("buddies", buddies);
+        model.addAttribute("addressBook", addressBook.toString());
+        model.addAttribute("addressBookId", addressBookId);
 
         return "addressbook";
     }
 
 
-    @RequestMapping("/")
-    public @ResponseBody String greeting() {
-        return "Hello, World";
+    @GetMapping("/")
+    public String createAddressBook(Model model) {
+        model.addAttribute("addressBook", new AddressBook());
+        return "formPage";
+    }
+
+    @PostMapping("/")
+    public String addressBookView(@ModelAttribute AddressBook book, Model model) {
+        repository.save(book);
+        model.addAttribute("addressBook", book.toString());
+        model.addAttribute("addressBookId", book.getId());
+        return "addressbook";
     }
 
 }

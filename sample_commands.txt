@@ -5,3 +5,5 @@ curl -i -H "Content-Type:application/json" -H "Accept: application/json" -X POST
 curl -i -H "Content-Type:application/json" -H "Accept: application/json" -X POST --data '{"name": "other", "phoneNumber": "234", "address": "poop address"}' http://localhost:8080/addToAddressBook/1
 
 curl -i -H "Content-Type:application/json" -H "Accept: application/json" -X POST --data '{"buddyId": 5, "addressBookId": 1}' http://localhost:8080/removeBuddy
+
+curl -i -H "Content-Type:application/json" -H "Accept: application/json" -X GET --data '{"name": "other"}' http://localhost:8080/test
