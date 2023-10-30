@@ -1,8 +1,8 @@
 org/example/Main.class
 org/example/jpa/BuddyInfoRepository.class
-org/example/controllers/BuddyInfoController.class
 org/example/controllers/AddressBookController.class
+org/example/BuddyInfo.class
+org/example/controllers/BuddyInfoController.class
 org/example/AccessingDataJPAApplication.class
 org/example/AddressBook.class
-org/example/BuddyInfo.class
 org/example/jpa/AddressBookRepository.class

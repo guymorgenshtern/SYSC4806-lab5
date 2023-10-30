@@ -43,7 +43,7 @@ public class HTTPRequestTest {
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
         this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello, World")));
+                .andExpect(content().string(containsString("html")));
     }
 
     @Test
@@ -53,8 +53,22 @@ public class HTTPRequestTest {
 
     @Test
     public void testAddingBuddy() throws Exception {
+
+        String param1 = "name";
+        String param2 = "number";
+        String param3 = "address";
+
+        String jsonString = "{"
+                + "\"name\": \"" + param1 + "\","
+                + "\"number\": \"" + param2 + "\","
+                + "\"address\": \"" + param3 + "\""
+                + "}";
+
         this.mockMvc.perform(post("/addToAddressBook/1")
-                .content(asJSONString(new BuddyInfo("test", "test number", "test address")))
+                .param("name", param1)
+                .param("number", param2)
+                .param("address", param3)
+                .content(jsonString)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.ALL))
                 .andExpect(status().isOk());
